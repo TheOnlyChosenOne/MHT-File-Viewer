@@ -66,14 +66,10 @@
 						document.getElementById('cssbody').innerHTML += '<style>' + cssContent + '</style>';
 					} else if (contentType.includes('image/')) {
 						const filename = lines[3].split(':')[1];
-						const imageData = lines.slice(5).join('');
+						const imageData = lines.slice(5).join('\n');
 						var elementId = "ss-" + filename.match(/\d+/)[0].replace(/^0+/, '');
-						console.log(elementId);
-						var element = document.getElementById(elementId);						
-						
-						
-						element.src = "data:image/jpeg;base64," + imageData.replace(/[\n\r]+/g, "").slice(0,-5);
-
+						var element = document.getElementById(elementId);	
+						element.src = "data:image/jpeg;base64," + imageData.slice(0,-5);
 					}
 				}
 			}
